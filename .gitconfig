@@ -1,3 +1,6 @@
+[user]
+	name = Andrei Bunulu
+	email = bunulu@gmail.com
 [alias]
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -27,7 +30,12 @@
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
-	remotes = remote -v
+	rv = remote -v
+
+	# Stash commands
+	sa = stash apply
+	sl = stash list
+	ss = stash save
 
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
@@ -139,25 +147,3 @@
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
 	# `git config --global push.default simple`. See http://git.io/mMah-w.
 	default = matching
-
-# URL shorthands
-
-[url "git@github.com:"]
-
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-
-[url "git://github.com/"]
-
-	insteadOf = "github:"
-
-[url "git@gist.github.com:"]
-
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
-
-[url "git://gist.github.com/"]
-
-	insteadOf = "gist:"
