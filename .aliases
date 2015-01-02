@@ -7,13 +7,13 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias d="cd ~/Dropbox"
+alias s="cd ~/Sites"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
 alias h="history"
-alias j="jobs"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -30,6 +30,9 @@ alias la="ls -laF ${colorflag}"
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# Full Recursive Directory Listing
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
@@ -58,13 +61,6 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
-# View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
-
 # OS X has no `md5sum`, so use `md5` as a fallback
 command -v md5sum > /dev/null || alias md5sum="md5"
 
@@ -76,8 +72,20 @@ jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
 [ -e "${jscbin}" ] && alias jsc="${jscbin}";
 unset jscbin;
 
-# Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+# Clear terminal display
+alias c='clear'
+
+# Find executables
+alias which='type -all'
+
+# Echo all executable Paths
+alias path='echo -e ${PATH//:/\\n}'
+
+# Quickly search for file
+alias f="find . -name "
+
+# To create a ZIP archive of a folder
+zipf () { zip -r "$1".zip "$1" ; }
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
@@ -94,24 +102,9 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
-
 # Merge PDF files
 # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
 alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
-
-# Disable Spotlight
-alias spotoff="sudo mdutil -a -i off"
-# Enable Spotlight
-alias spoton="sudo mdutil -a -i on"
-
-# PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
-alias plistbuddy="/usr/libexec/PlistBuddy"
-
-# Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
-# (useful when executing time-consuming commands)
-alias badge="tput bel"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -139,3 +132,21 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+
+# apacheEdit:      Edit httpd.conf
+alias apacheEdit='sudo $EDITOR /etc/httpd/httpd.conf'
+# vhostEdit:       Edit httpd-vhosts.conf
+alias vhostEdit='sudo $EDITOR /etc/apache2/extra/httpd-vhosts.conf'
+# apacheRestart:   Restart Apache
+alias apacheRestart='sudo apachectl graceful'
+# hostEdit:        Edit /etc/hosts file
+alias hostEdit='sudo $EDITOR /etc/hosts'
+# herr:            Tails HTTP error logs
+alias herr='tail /var/log/httpd/error_log'
+# Apachelogs:      Shows apache error logs
+alias apacheLogs="less +F /var/log/apache2/error_log"
+
+# httpHeaders:      Grabs headers from web page
+httpHeaders () { /usr/bin/curl -I -L $@ ; }
+# Download a web page and show info on what took time
+httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }

@@ -15,6 +15,9 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# Install z https://github.com/rupa/z
+brew install z
+
 # Install git
 brew install git
 
