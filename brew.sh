@@ -30,6 +30,7 @@ brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap homebrew/homebrew-php
 brew install php56 --with-postgresql
+brew install php56-mcrypt
 
 # To have launchd start php56 at login:
 ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
