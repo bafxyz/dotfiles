@@ -1,3 +1,6 @@
+# Initialize rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # Initialize z.
 # Move next only if `homebrew` is installed
 if command -v brew >/dev/null 2>&1; then

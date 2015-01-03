@@ -40,6 +40,9 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
 # Install Composer
 brew install composer
 
+# Install phpmyadmin
+brew install phpmyadmin
+
 # Install Mysql
 brew install mysql
 
@@ -52,6 +55,9 @@ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 # Install Postgresql
 brew install postgresql
 
+# Install phppgadmin
+brew install phppgadmin
+
 # To have launchd start postgresql at login:
 ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 
@@ -59,13 +65,24 @@ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 # Install Redis
-brew install Redis
+brew install redis
+brew install php56-redis
 
 # To have launchd start redis at login:
 ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
 
 # Then to load redis now:
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+
+# Install Ruby
+brew install rbenv ruby-build
+
+# List Ruby versions
+rbenv install -l
+
+# Example of global ruby 2.2.0 installation
+# rbenv install 2.2.0
+# rbenv global 2.2.0
 
 # Remove outdated versions from the cellar.
 brew cleanup

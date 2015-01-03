@@ -134,7 +134,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec $SHELL -l"
 
 # apacheEdit:      Edit httpd.conf
-alias apacheEdit='sudo $EDITOR /etc/httpd/httpd.conf'
+alias apacheEdit='sudo $EDITOR /etc/apache2/httpd.conf'
 # vhostEdit:       Edit httpd-vhosts.conf
 alias vhostEdit='sudo $EDITOR /etc/apache2/extra/httpd-vhosts.conf'
 # apacheRestart:   Restart Apache
