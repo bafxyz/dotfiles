@@ -31,6 +31,8 @@ brew tap homebrew/versions
 brew tap homebrew/homebrew-php
 brew install php56 --with-postgresql
 brew install php56-mcrypt
+brew install php56-apcu
+brew install php56-xdebug
 
 # To have launchd start php56 at login:
 ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
@@ -84,6 +86,11 @@ rbenv install -l
 # Example of global ruby 2.2.0 installation
 # rbenv install 2.2.0
 # rbenv global 2.2.0
+
+# Install python
+brew install python
+pip install --upgrade pip
+pip install --upgrade setuptools
 
 # Remove outdated versions from the cellar.
 brew cleanup
