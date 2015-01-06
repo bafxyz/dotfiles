@@ -92,5 +92,8 @@ brew install python
 pip install --upgrade pip
 pip install --upgrade setuptools
 
+# Install android-sdk
+brew install android-sdk
+
 # Remove outdated versions from the cellar.
 brew cleanup

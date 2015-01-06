@@ -1,3 +1,7 @@
+# History search
+bind '"\C-n": history-search-forward'
+bind '"\C-p": history-search-backward'
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
