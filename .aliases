@@ -88,6 +88,9 @@ alias path='echo -e ${PATH//:/\\n}'
 # Quickly search for file
 alias f="find . -name "
 
+# Quickly search for file
+alias ff="sudo find / -name "
+
 # To create a ZIP archive of a folder
 zipf () { zip -r "$1".zip "$1" ; }
 

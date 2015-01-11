@@ -15,6 +15,9 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# zsh bash shell
+brew install zsh
+
 # Install z https://github.com/rupa/z
 brew install z
 
