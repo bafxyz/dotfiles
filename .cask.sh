@@ -1,6 +1,7 @@
 brew cask fetch node
 brew cask install google-chrome
 brew cask install firefox
+brew cask install macpass
 brew cask install spectacle
 brew cask install cheatsheet
 brew cask install dropbox
