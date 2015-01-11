@@ -1,7 +1,11 @@
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
 brew cask fetch node
+brew cask install sublime-text-dev
 brew cask install google-chrome
 brew cask install firefox
 brew cask install macpass
+brew cask install utorrent
 brew cask install spectacle
 brew cask install cheatsheet
 brew cask install dropbox
