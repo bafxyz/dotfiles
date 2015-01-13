@@ -126,10 +126,6 @@ done
 # Make Grunt print stack traces by default
 command -v grunt > /dev/null && alias grunt="grunt --stack"
 
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume 7'"
-
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
 alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
@@ -140,20 +136,13 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
-# apacheEdit:      Edit httpd.conf
-alias apacheEdit='sudo $EDITOR /etc/apache2/httpd.conf'
+# httpdEdit:      Edit httpd.conf
+alias httpdEdit='sudo $EDITOR /etc/apache2/httpd.conf'
 # vhostEdit:       Edit httpd-vhosts.conf
 alias vhostEdit='sudo $EDITOR /etc/apache2/extra/httpd-vhosts.conf'
 # apacheRestart:   Restart Apache
 alias apacheRestart='sudo apachectl graceful'
 # hostEdit:        Edit /etc/hosts file
 alias hostEdit='sudo $EDITOR /etc/hosts'
-# herr:            Tails HTTP error logs
-alias herr='tail /var/log/httpd/error_log'
-# Apachelogs:      Shows apache error logs
-alias apacheLogs="less +F /var/log/apache2/error_log"
-
-# httpHeaders:      Grabs headers from web page
-httpHeaders () { /usr/bin/curl -I -L $@ ; }
-# Download a web page and show info on what took time
-httpDebug () { /usr/bin/curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n" ; }
+# apache, vhost logs
+alias logs="s /var/log/apache2/"

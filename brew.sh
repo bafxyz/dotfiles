@@ -98,5 +98,18 @@ pip install --upgrade setuptools
 # Install android-sdk
 brew install android-sdk
 
+# Install html linter
+brew install homebrew/dupes/tidy
+
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Node packages
+npm install -g jscs
+npm install -g jshint
+npm install -g csslint
+
+# Ruby packages
+gem install sass
+gem install compass
+gem install scss-lint
