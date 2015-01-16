@@ -16,4 +16,6 @@ brew cask install licecap
 brew cask install sublime-text
 brew cask install balsamiq-mockups
 brew cask install plex-media-server
+brew cask install iterm2
+brew cask install appcleaner
 # brew cask install android-file-transfer

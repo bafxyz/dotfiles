@@ -17,6 +17,10 @@ brew upgrade
 
 # zsh bash shell
 brew install zsh
+# Add oh-my-zsh
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+# Make zsh default shell
+chsh -s /bin/zsh
 
 # Install z https://github.com/rupa/z
 brew install z
