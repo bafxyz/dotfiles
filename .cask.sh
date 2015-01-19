@@ -18,4 +18,5 @@ brew cask install balsamiq-mockups
 brew cask install plex-media-server
 brew cask install iterm2
 brew cask install appcleaner
+brew cask install sequel-pro
 # brew cask install android-file-transfer
