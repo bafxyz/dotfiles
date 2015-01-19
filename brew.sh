@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 xcode-select --install
 
+# Install homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Install command-line tools using Homebrew.
 
 # Ask for the administrator password upfront.

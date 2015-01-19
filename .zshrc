@@ -15,6 +15,9 @@ fi
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
+# Clear terminal display
+alias c='clear'
+
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias www="cd ~/Sites"
@@ -35,7 +38,7 @@ fi
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -61,13 +64,13 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec $SHELL -l"
 
 # httpdEdit:      Edit httpd.conf
-alias httpdEdit='sudo $EDITOR /etc/apache2/httpd.conf'
+alias httpdEdit='sudo subl /etc/apache2/httpd.conf'
 # vhostEdit:       Edit httpd-vhosts.conf
-alias vhostEdit='sudo $EDITOR /etc/apache2/extra/httpd-vhosts.conf'
+alias vhostEdit='sudo subl /etc/apache2/extra/httpd-vhosts.conf'
 # apacheRestart:   Restart Apache
 alias apacheRestart='sudo apachectl graceful'
 # hostEdit:        Edit /etc/hosts file
-alias hostEdit='sudo $EDITOR /etc/hosts'
+alias hostEdit='sudo subl /etc/hosts'
 # apache, vhost logs
 alias logs="s /var/log/apache2/"
 
@@ -128,7 +131,7 @@ COMPLETION_WAITING_DOTS="true"
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump bower dirhistory last-working-dir npm osx symfony2 sublime web-search)
+plugins=(git autojump bower dirhistory last-working-dir npm osx symfony2 sublime web-search brew zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
