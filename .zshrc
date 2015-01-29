@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export ANDROID_HOME=/usr/local/opt/android-sdk
 source $ZSH/oh-my-zsh.sh
 
 # Initialize rbenv
@@ -8,8 +9,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Initialize z.
 # Move next only if `homebrew` is installed
 if command -v brew >/dev/null 2>&1; then
-    # Load rupa's z if installed
-    [ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+		# Load rupa's z if installed
+		[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
 fi
 
 # Add `~/bin` to the `$PATH`
@@ -141,9 +142,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='subl'
+	export EDITOR='subl'
 else
-  export EDITOR='vim'
+	export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -208,3 +209,37 @@ if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
 elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
+
+function tab () {
+	local cmd=""
+	local cdto="$PWD"
+	local args="$@"
+
+	if [ -d "$1" ]; then
+		cdto=`cd "$1"; pwd`
+		args="${@:2}"
+	fi
+
+	if [ -n "$args" ]; then
+		cmd="; $args"
+	fi
+
+	osascript &>/dev/null <<EOF
+		tell application "iTerm"
+			tell current terminal
+				launch session "Default Session"
+				tell the last session
+					write text "cd \"$cdto\"$cmd"
+				end tell
+			end tell
+		end tell
+EOF
+}
+
+alias t1='cd ~/Sites/vcmobile; grunt browser:build; grunt browser:server:repl'
+alias t2='cd ~/Sites/vcmobile; yaxy'
+alias t3='cd ~/Sites/vircgame/vircgame_tornado; python app.py'
+alias t4='cd ~/Sites/vircgame/war_node; node build --repl'
+alias t5='cd ~/Sites/vircgame/war_node; grunt build; grunt watch'
+alias t6='cd ~/Sites/vircgame/notifications_node; node build --input --output --repl'
+alias t7='cd ~/Sites/vircgame/notifications_node; grunt build; grunt watch'
