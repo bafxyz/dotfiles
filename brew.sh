@@ -104,6 +104,7 @@ pip install --upgrade setuptools
 
 # Install android-sdk
 brew install android-sdk
+brew install ant
 
 # Install html linter
 brew install homebrew/dupes/tidy
