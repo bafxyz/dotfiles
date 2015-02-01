@@ -210,32 +210,6 @@ elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
 
-function tab () {
-	local cmd=""
-	local cdto="$PWD"
-	local args="$@"
-
-	if [ -d "$1" ]; then
-		cdto=`cd "$1"; pwd`
-		args="${@:2}"
-	fi
-
-	if [ -n "$args" ]; then
-		cmd="; $args"
-	fi
-
-	osascript &>/dev/null <<EOF
-		tell application "iTerm"
-			tell current terminal
-				launch session "Default Session"
-				tell the last session
-					write text "cd \"$cdto\"$cmd"
-				end tell
-			end tell
-		end tell
-EOF
-}
-
 alias t1='cd ~/Sites/vcmobile; grunt browser:build; grunt browser:server:repl'
 alias t2='cd ~/Sites/vcmobile; yaxy'
 alias t3='cd ~/Sites/vircgame/vircgame_tornado; python app.py'
@@ -243,3 +217,52 @@ alias t4='cd ~/Sites/vircgame/war_node; node build --repl'
 alias t5='cd ~/Sites/vircgame/war_node; grunt build; grunt watch'
 alias t6='cd ~/Sites/vircgame/notifications_node; node build --input --output --repl'
 alias t7='cd ~/Sites/vircgame/notifications_node; grunt build; grunt watch'
+
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+	local port="${1:-8000}";
+	sleep 1 && open "http://localhost:${port}/" &
+	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+}
+
+# Start a PHP server from a directory, optionally specifying the port
+# (Requires PHP 5.4.0+.)
+function phpserver() {
+	local port="${1:-4000}";
+	local ip=$(ipconfig getifaddr en1);
+	sleep 1 && open "http://${ip}:${port}/" &
+	php -S "${ip}:${port}";
+}
+
+# `s` with no arguments opens the current directory in Sublime Text, otherwise
+# opens the given location
+function s() {
+	if [ $# -eq 0 ]; then
+		subl .;
+	else
+		subl "$@";
+	fi;
+}
+
+# `v` with no arguments opens the current directory in Vim, otherwise opens the
+# given location
+function v() {
+	if [ $# -eq 0 ]; then
+		vim .;
+	else
+		vim "$@";
+	fi;
+}
+
+# `o` with no arguments opens the current directory, otherwise opens the given
+# location
+function o() {
+	if [ $# -eq 0 ]; then
+		open .;
+	else
+		open "$@";
+	fi;
+}
