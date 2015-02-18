@@ -130,7 +130,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump bower dirhistory last-working-dir npm osx symfony2 sublime web-search brew zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
