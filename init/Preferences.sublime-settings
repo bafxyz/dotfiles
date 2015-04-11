@@ -1,35 +1,27 @@
 {
 	"always_show_minimap_viewport": true,
 	"bold_folder_labels": true,
-	"draw_white_space": "all",
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"copy_with_empty_selection": false,
+	"caret_style": "phase",
+	"color_scheme": "Packages/wild-cherry/wild-cherry.tmTheme",
+	"copy_with_empty_selection": true,
+	"default_line_ending": "unix",
 	"draw_minimap_border": true,
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
 	"font_size": 13,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
+		"Markdown Extended",
+		"Bootstrap 3 Snippets",
+		"Markdown",
+		"Nodejs",
+		"JavaScript"
 	],
-	"file_exclude_patterns":
-	[
-		".DS_Store",
-		"Desktop.ini",
-		"*.pyc",
-		"._*",
-		"Thumbs.db",
-		".Spotlight-V100",
-		".Trashes"
-	],
-	"folder_exclude_patterns":
-	[
-		".git"
-	],
+	"scroll_past_end": true,
 	"show_encoding": true,
-	"default_line_ending": "unix",
 	"show_line_endings": true,
 	"tab_size": 2,
-	"theme": "Cobalt2.sublime-theme",
-	"trim_trailing_white_space_on_save": true,
-	"scroll_past_end": true,
-	"caret_style": "phase"
+	"theme": "wild-cherry.sublime-theme",
+	"trim_trailing_white_space_on_save": true
 }

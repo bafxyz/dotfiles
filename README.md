@@ -2,7 +2,7 @@
 
 This is a fork of Mathias’s dotfiles
 
-![Screenshot of my shell prompt](http://i.imgur.com/EkEtphC.png)
+![Screenshot of my shell prompt](http://i.imgur.com/5NMkJfO.png?1)
 
 ## Installation
 
