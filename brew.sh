@@ -121,3 +121,6 @@ npm install -g csslint
 gem install sass
 gem install compass
 gem install scss-lint
+
+# Task manager
+brew install task

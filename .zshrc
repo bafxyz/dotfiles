@@ -20,17 +20,14 @@ fi
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
-# Clear terminal display
-alias c='clear'
-
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias www="cd ~/Sites"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
-alias g="git"
 alias h="history"
+alias -- -="cd -"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -46,9 +43,7 @@ alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com; ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
@@ -101,7 +96,7 @@ ZSH_THEME="wild-cherry"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -136,7 +131,7 @@ COMPLETION_WAITING_DOTS="true"
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump bower dirhistory last-working-dir npm osx symfony2 sublime web-search brew zsh-syntax-highlighting)
+plugins=(compleat colorize history-substring-search colored-man command-not-found postgres bower grunt node composer coffee npm osx symfony2 taskwarrior z brew last-working-dir web-search zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -222,6 +217,9 @@ alias t5='cd ~/Sites/vircgame/war_node; grunt build; grunt watch'
 alias t6='cd ~/Sites/vircgame/notifications_node; node build --input --output --repl'
 alias t7='cd ~/Sites/vircgame/notifications_node; grunt build; grunt watch'
 
+# Phonegap build for vcgame
+alias pandroid='cd ~/Sites/vcmobile; rm -rf www; cordova platform add android; grunt phonegap:build; echo PF9DZJmfWt; jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vc-mobile.keystore VC-mobile-unsigned.apk vc-mobile-keystone; /usr/local/Cellar/android-sdk/24.1.2/build-tools/22.0.1/zipalign -v 4 VC-mobile-unsigned.apk VC-mobile.apk;'
+alias pios='cd ~/Sites/vcmobile; rm -rf www; rm -rf platforms/ios; grunt phonegap:build:ios; cordova platforms add ios; cordova build ios; cordova emulate ios -d;'
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {

@@ -20,4 +20,3 @@ brew cask install iterm2
 brew cask install appcleaner
 brew cask install sequel-pro
 brew cask install filedrop
-# brew cask install android-file-transfer
