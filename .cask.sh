@@ -13,10 +13,10 @@ brew cask install skype
 brew cask install teamviewer
 brew cask install mplayerx
 brew cask install licecap
-brew cask install sublime-text
 brew cask install balsamiq-mockups
 brew cask install plex-media-server
 brew cask install iterm2
 brew cask install appcleaner
 brew cask install sequel-pro
+brew cask install genymotion
 brew cask install filedrop

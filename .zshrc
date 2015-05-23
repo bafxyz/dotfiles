@@ -131,7 +131,7 @@ COMPLETION_WAITING_DOTS="true"
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(compleat colorize history-substring-search colored-man command-not-found postgres bower grunt node composer coffee npm osx symfony2 taskwarrior z brew last-working-dir web-search zsh-syntax-highlighting)
+plugins=(compleat colorize history-substring-search colored-man command-not-found sprunge postgres bower grunt node composer coffee npm osx symfony2 taskwarrior redis-cli z brew last-working-dir web-search zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -218,7 +218,7 @@ alias t6='cd ~/Sites/vircgame/notifications_node; node build --input --output --
 alias t7='cd ~/Sites/vircgame/notifications_node; grunt build; grunt watch'
 
 # Phonegap build for vcgame
-alias pandroid='cd ~/Sites/vcmobile; rm -rf www; cordova platform add android; grunt phonegap:build; echo PF9DZJmfWt; jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vc-mobile.keystore VC-mobile-unsigned.apk vc-mobile-keystone; /usr/local/Cellar/android-sdk/24.1.2/build-tools/22.0.1/zipalign -v 4 VC-mobile-unsigned.apk VC-mobile.apk;'
+alias pandroid='cd ~/Sites/vcmobile; rm -rf www; cordova platform add android; grunt phonegap:build; echo PF9DZJmfWt; jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vc-mobile.keystore /Users/ab/Sites/vcmobile/platforms/android/build/outputs/apk/android-release-unsigned.apk vc-mobile-keystone; zipalign -v 4 /Users/ab/Sites/vcmobile/platforms/android/build/outputs/apk/android-release-unsigned.apk VC-mobile.apk;'
 alias pios='cd ~/Sites/vcmobile; rm -rf www; rm -rf platforms/ios; grunt phonegap:build:ios; cordova platforms add ios; cordova build ios; cordova emulate ios -d;'
 
 # Start an HTTP server from a directory, optionally specifying the port

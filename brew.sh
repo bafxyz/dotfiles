@@ -16,7 +16,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 brew update
 
 # Upgrade any already-installed formulae.
-brew upgrade
+brew upgrade --all
 
 # zsh bash shell
 brew install zsh
@@ -114,12 +114,11 @@ brew cleanup
 
 # Node packages
 npm install -g jscs
-npm install -g jshint
 npm install -g csslint
+npm install -g stylint
 
 # Ruby packages
 gem install sass
-gem install compass
 gem install scss-lint
 
 # Task manager
