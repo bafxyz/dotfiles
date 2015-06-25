@@ -79,8 +79,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Quickly search for file
 alias f="find . -name "
-
-# Quickly search for file
 alias ff="sudo find / -name "
 
 # Set name of the theme to load.
@@ -211,11 +209,6 @@ fi;
 
 alias t1='cd ~/Sites/vcmobile; grunt browser:build; grunt browser:server:repl'
 alias t2='cd ~/Sites/vcmobile; yaxy'
-alias t3='cd ~/Sites/vircgame/vircgame_tornado; python app.py'
-alias t4='cd ~/Sites/vircgame/war_node; node build --repl'
-alias t5='cd ~/Sites/vircgame/war_node; grunt build; grunt watch'
-alias t6='cd ~/Sites/vircgame/notifications_node; node build --input --output --repl'
-alias t7='cd ~/Sites/vircgame/notifications_node; grunt build; grunt watch'
 
 # Phonegap build for vcgame
 alias pandroid='cd ~/Sites/vcmobile; rm -rf www; cordova platform add android; grunt phonegap:build; echo PF9DZJmfWt; jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vc-mobile.keystore /Users/ab/Sites/vcmobile/platforms/android/build/outputs/apk/android-release-unsigned.apk vc-mobile-keystone; zipalign -v 4 /Users/ab/Sites/vcmobile/platforms/android/build/outputs/apk/android-release-unsigned.apk VC-mobile.apk;'

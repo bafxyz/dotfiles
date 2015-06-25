@@ -20,3 +20,7 @@ brew cask install appcleaner
 brew cask install sequel-pro
 brew cask install genymotion
 brew cask install filedrop
+brew cask install slack
+
+# Change screenshots default location
+defaults write com.apple.screencapture location ~/Pictures/screenshots

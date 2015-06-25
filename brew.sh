@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 xcode-select --install
 
+# Enable debugger in Safary
+defaults write com.apple.Safari IncludeDebugMenu 1
+
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -43,6 +46,9 @@ brew install php56 --with-postgresql
 brew install php56-mcrypt
 brew install php56-apcu
 brew install php56-xdebug
+
+# Install RabbitMQ
+brew install rabbitmq
 
 # To have launchd start php56 at login:
 ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
@@ -94,17 +100,18 @@ brew install rbenv ruby-build
 rbenv install -l
 
 # Example of global ruby 2.2.0 installation
-# rbenv install 2.2.0
-# rbenv global 2.2.0
+rbenv install 2.2.2
+rbenv global 2.2.2
 
 # Install python
-brew install python
-pip install --upgrade pip
-pip install --upgrade setuptools
+# brew install python
+# pip install --upgrade pip
+# pip install --upgrade setuptools
 
 # Install android-sdk
 brew install android-sdk
 brew install ant
+brew install Caskroom/cask/genymotion
 
 # Install html linter
 brew install homebrew/dupes/tidy
@@ -116,6 +123,8 @@ brew cleanup
 npm install -g jscs
 npm install -g csslint
 npm install -g stylint
+npm install -g webpack
+npm install webpack-dev-server --global
 
 # Ruby packages
 gem install sass
