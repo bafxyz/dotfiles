@@ -34,9 +34,22 @@ brew install z
 # Install git
 brew install git
 
-# Install Node.js. Note: this installs `npm` too, using the recommended
-# installation method.
-brew install node
+# Install Node Version Manager.
+brew install nvm
+mkdir ~/.nvm
+cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+
+# Show list of available node versions
+nvm ls-remote
+
+# Install node version 4
+nvm install 4
+nvm use 4
+# Set default version of node to new terminal window
+nvm alias default 4
+
+# Upgrade npm to latest version
+npm install -g npm@latest
 
 # Install PHP.
 brew tap homebrew/dupes
@@ -48,7 +61,7 @@ brew install php56-apcu
 brew install php56-xdebug
 
 # Install RabbitMQ
-brew install rabbitmq
+# brew install rabbitmq
 
 # To have launchd start php56 at login:
 ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
@@ -99,9 +112,9 @@ brew install rbenv ruby-build
 # List Ruby versions
 rbenv install -l
 
-# Example of global ruby 2.2.0 installation
-rbenv install 2.2.2
-rbenv global 2.2.2
+# Example of global ruby 2.2.3 installation
+rbenv install 2.2.3
+rbenv global 2.2.3
 
 # Install python
 # brew install python
@@ -114,15 +127,15 @@ brew install ant
 brew install Caskroom/cask/genymotion
 
 # Install html linter
-brew install homebrew/dupes/tidy
+# brew install homebrew/dupes/tidy
 
 # Remove outdated versions from the cellar.
 brew cleanup
 
 # Node packages
-npm install -g jscs
+# npm install -g jscs
 npm install -g csslint
-npm install -g stylint
+# npm install -g stylint
 npm install -g webpack
 npm install webpack-dev-server --global
 

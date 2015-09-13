@@ -7,6 +7,10 @@ export ZSH=$HOME/.oh-my-zsh
 export ANDROID_HOME=/usr/local/opt/android-sdk
 source $ZSH/oh-my-zsh.sh
 
+# Initialize nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # Initialize rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -25,7 +29,7 @@ alias d="cd ~/Dropbox"
 alias www="cd ~/Sites"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias p="cd ~/Projects"
 alias h="history"
 alias -- -="cd -"
 
@@ -94,7 +98,7 @@ ZSH_THEME="wild-cherry"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=1
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -206,13 +210,6 @@ if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
 elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
-
-alias t1='cd ~/Sites/vcmobile; grunt browser:build; grunt browser:server:repl'
-alias t2='cd ~/Sites/vcmobile; yaxy'
-
-# Phonegap build for vcgame
-alias pandroid='cd ~/Sites/vcmobile; rm -rf www; cordova platform add android; grunt phonegap:build; echo PF9DZJmfWt; jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore vc-mobile.keystore /Users/ab/Sites/vcmobile/platforms/android/build/outputs/apk/android-release-unsigned.apk vc-mobile-keystone; zipalign -v 4 /Users/ab/Sites/vcmobile/platforms/android/build/outputs/apk/android-release-unsigned.apk VC-mobile.apk;'
-alias pios='cd ~/Sites/vcmobile; rm -rf www; rm -rf platforms/ios; grunt phonegap:build:ios; cordova platforms add ios; cordova build ios; cordova emulate ios -d;'
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {

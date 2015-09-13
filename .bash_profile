@@ -1,3 +1,7 @@
+# Initialize nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # Initialize rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
