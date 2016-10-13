@@ -1,7 +1,33 @@
-" Use the Solarized Dark theme
+" Use the vim-kolor theme
 set background=dark
-colorscheme solarized
-let g:solarized_termtrans=1
+
+let g:kolor_italic=1                    " Enable italic. Default: 1
+let g:kolor_bold=1                      " Enable bold. Default: 1
+let g:kolor_underlined=0                " Enable underline. Default: 0
+let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+
+" The powerline font symbols are not showing up
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_enable_signs=1
+let g:syntastic_disabled_filetypes = ['scss']
+
+set t_Co=256
+set noshowmode
+
+colorscheme gruvbox
 
 " Make Vim more useful
 set nocompatible
@@ -76,10 +102,10 @@ set title
 " Show the (partial) command as it’s being typed
 set showcmd
 " Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
+"if exists("&relativenumber")
+"	set relativenumber
+"	au BufReadPost * set relativenumber
+"endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
@@ -104,3 +130,62 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
+
+"==================== PLUGINS SECTION ======================
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')i
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Status/tabline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Plugin 'pangloss/vim-javascript'
+
+" EditorConfig helps developers define and maintain consistent coding styles
+" between different editors and IDEs
+Plugin 'editorconfig/editorconfig-vim'
+
+" Much simpler way to use some motions in vim
+Plugin 'easymotion/vim-easymotion'
+
+" Easy align text
+Plugin 'junegunn/vim-easy-align'
+
+" Auto format code
+Plugin 'Chiel92/vim-autoformat'
+
+" Tree view for files
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ryanoasis/vim-devicons'
+
+" Surround strings
+Plugin 'tpope/vim-surround'
+
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+
+" css/less/sass/html color preview
+Plugin 'gko/vim-coloresque'
+
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+
+" Code completion engine
+Plugin 'valloric/youcompleteme'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
