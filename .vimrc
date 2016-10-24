@@ -1,55 +1,92 @@
-" Use the vim-kolor theme
-set background=dark
+"-------------------------------------------------
+" PLUGINS
+"-------------------------------------------------
+filetype off
 
-let g:kolor_italic=1                    " Enable italic. Default: 1
-let g:kolor_bold=1                      " Enable bold. Default: 1
-let g:kolor_underlined=0                " Enable underline. Default: 0
-let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" The powerline font symbols are not showing up
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
+" Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+Plugin 'editorconfig/editorconfig-vim'
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_enable_signs=1
-let g:syntastic_disabled_filetypes = ['scss']
+Plugin 'godlygeek/tabular'
 
-set t_Co=256
-set noshowmode
+Plugin 'Chiel92/vim-autoformat'
 
-colorscheme gruvbox
+Plugin 'mattn/emmet-vim'
 
-" Make Vim more useful
-set nocompatible
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-" Enhance command-line completion
-set wildmenu
-" Allow cursor keys in insert mode
-set esckeys
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-" Optimize for fast terminal connections
+Plugin 'tpope/vim-surround'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'scrooloose/syntastic'
+
+Plugin 'valloric/youcompleteme'
+
+" :StripWhitespace
+Plugin 'ntpeters/vim-better-whitespace'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"-------------------------------------------------
+
+" Disable Arrow keys in Escape mode
+noremap <left> <nop>
+noremap <down> <nop>
+noremap <up> <nop>
+noremap <rightt> <nop>
+
+"-------------------------------------------------
+" BASIC EDITING CONFIGURATION
+"-------------------------------------------------
+
 set ttyfast
-" Add the g flag to search/replace by default
 set gdefault
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
-" Change mapleader
-let mapleader=","
+
+set encoding=utf8
+set termencoding=utf8
+set fileencodings=utf8,cp1251,koi8r
+
+set nocompatible
+set showmode
+set title
+set showcmd
+
+colorscheme kolor
+set t_Co=256
+set background=dark
+set relativenumber
+set wrap
+set linebreak
+set autoindent
+set smartindent
+set tabstop=2
+set expandtab
+set shiftwidth=2
+
+" Provides tab complition for all relative tasks
+" Usage find 'filename' and press tab key also 'ls' shows list of recent
+" opened files or :b 'substr' of file name and enter key
+set path +=**
+set wildmenu " Enhance command-line completion
+set clipboard=unnamed
+
+
+set esckeys " Allow cursor keys in insert mode
+set backspace=indent,eol,start " Allow backspace in insert mode
+
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
+
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -60,25 +97,22 @@ endif
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
-" Respect modeline in files
-set modeline
-set modelines=4
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
+
 " Enable line numbers
 set number
+
 " Enable syntax highlighting
 syntax on
+"set list
+"set listchars=tab:--
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
 " Highlight current line
 set cursorline
-" Make tabs as wide as two spaces
-set tabstop=2
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
-" Highlight searches
-set hlsearch
 " Ignore case of searches
 set ignorecase
 " Highlight dynamically as pattern is typed
@@ -87,20 +121,12 @@ set incsearch
 set laststatus=2
 " Enable mouse in all modes
 set mouse=a
-" Disable error bells
-set noerrorbells
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
 " Show the cursor position
-set ruler
+" set ruler
 " Don’t show the intro message when starting Vim
 set shortmess=atI
-" Show the current mode
-set showmode
-" Show the filename in the window titlebar
-set title
-" Show the (partial) command as it’s being typed
-set showcmd
 " Use relative line numbers
 "if exists("&relativenumber")
 "	set relativenumber
@@ -130,62 +156,3 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
-
-"==================== PLUGINS SECTION ======================
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')i
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Status/tabline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" Plugin 'pangloss/vim-javascript'
-
-" EditorConfig helps developers define and maintain consistent coding styles
-" between different editors and IDEs
-Plugin 'editorconfig/editorconfig-vim'
-
-" Much simpler way to use some motions in vim
-Plugin 'easymotion/vim-easymotion'
-
-" Easy align text
-Plugin 'junegunn/vim-easy-align'
-
-" Auto format code
-Plugin 'Chiel92/vim-autoformat'
-
-" Tree view for files
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'ryanoasis/vim-devicons'
-
-" Surround strings
-Plugin 'tpope/vim-surround'
-
-" Git wrapper
-Plugin 'tpope/vim-fugitive'
-
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-
-" css/less/sass/html color preview
-Plugin 'gko/vim-coloresque'
-
-" Syntax checking
-Plugin 'scrooloose/syntastic'
-
-" Code completion engine
-Plugin 'valloric/youcompleteme'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
