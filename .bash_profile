@@ -1,9 +1,9 @@
 # Initialize nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+#export NVM_DIR=~/.nvm
+#source $(brew --prefix nvm)/nvm.sh
 
 # Initialize rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Initialize z.
 # Move next only if `homebrew` is installed

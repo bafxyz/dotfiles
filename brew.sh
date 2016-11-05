@@ -4,6 +4,9 @@ xcode-select --install
 # Enable debugger in Safary
 defaults write com.apple.Safari IncludeDebugMenu 1
 
+# Install vundle for vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -35,86 +38,87 @@ brew install z
 brew install git
 
 # Install Node Version Manager.
-brew install nvm
-mkdir ~/.nvm
-cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+#brew install nvm
+#mkdir ~/.nvm
+#cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
 
 # Show list of available node versions
-nvm ls-remote
+#nvm ls-remote
 
 # Install node version 4
-nvm install 4
-nvm use 4
+#nvm install 4
+#nvm use 4
 # Set default version of node to new terminal window
-nvm alias default 4
+#nvm alias default 4
 
 # Upgrade npm to latest version
+brew install node
 npm install -g npm@latest
 
 # Install PHP.
-brew tap homebrew/dupes
-brew tap homebrew/versions
-brew tap homebrew/homebrew-php
-brew install php56 --with-postgresql
-brew install php56-mcrypt
-brew install php56-apcu
-brew install php56-xdebug
+#brew tap homebrew/dupes
+#brew tap homebrew/versions
+#brew tap homebrew/homebrew-php
+#brew install php56 --with-postgresql
+#brew install php56-mcrypt
+#brew install php56-apcu
+#brew install php56-xdebug
 
 # Install RabbitMQ
 # brew install rabbitmq
 
 # To have launchd start php56 at login:
-ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
+#ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
 
 # Then to load php56 now:
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
+#launchctl load ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
 
 # Install Composer
-brew install composer
+#brew install composer
 
 # Install phpmyadmin
-brew install phpmyadmin
+#brew install phpmyadmin
 
 # Install Mysql
-brew install mysql
+#brew install mysql
 
 # To have launchd start mysql at login:
-ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+#ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 
 # Then to load mysql now:
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+#launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
 
 # Install Postgresql
-brew install postgresql
+#brew install postgresql
 
 # Install phppgadmin
-brew install phppgadmin
+#brew install phppgadmin
 
 # To have launchd start postgresql at login:
-ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+#ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 
 # Then to load postgresql now:
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+#launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 
 # Install Redis
-brew install redis
-brew install php56-redis
+#brew install redis
+#brew install php56-redis
 
 # To have launchd start redis at login:
-ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+#ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
 
 # Then to load redis now:
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+#launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
 
 # Install Ruby
-brew install rbenv ruby-build
+#brew install rbenv ruby-build
 
 # List Ruby versions
-rbenv install -l
+#rbenv install -l
 
 # Example of global ruby 2.2.3 installation
-rbenv install 2.2.3
-rbenv global 2.2.3
+#rbenv install 2.2.3
+#rbenv global 2.2.3
 
 # Install python
 # brew install python
@@ -134,9 +138,9 @@ brew cleanup
 
 # Node packages
 # npm install -g jscs
-npm install -g csslint
+#npm install -g csslint
 # npm install -g stylint
-npm install -g webpack
+#npm install -g webpack
 npm install webpack-dev-server --global
 
 # Ruby packages
