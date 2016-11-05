@@ -4,9 +4,6 @@ xcode-select --install
 # Enable debugger in Safary
 defaults write com.apple.Safari IncludeDebugMenu 1
 
-# Install vundle for vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -23,6 +20,19 @@ brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade --all
+
+# Install vundle for vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+brew install vim
+
+# Install go
+brew install go
+
+# Vim autocomplete package dependency
+brew install CMake
+
+# cd ~/.vim/bundle/YouCompleteMe
+# ./install.py --gocode-completer --tern-completer
 
 # zsh bash shell
 brew install zsh
