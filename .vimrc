@@ -32,6 +32,8 @@ Plugin 'valloric/youcompleteme'
 " :StripWhitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
+Plugin 'fatih/vim-go'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
