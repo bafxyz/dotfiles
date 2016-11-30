@@ -44,7 +44,7 @@ else # OS X `ls`
 fi
 
 # Full Recursive Directory Listing
-alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
+# alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew cask cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
@@ -136,7 +136,7 @@ COMPLETION_WAITING_DOTS="true"
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(compleat colorize history-substring-search colored-man command-not-found sprunge postgres bower grunt node composer coffee npm osx symfony2 taskwarrior redis-cli z brew last-working-dir web-search zsh-syntax-highlighting)
+plugins=(sudo mvn docker common-aliases dircycle compleat colorize history-substring-search colored-man command-not-found sprunge postgres bower grunt node composer coffee npm osx symfony2 taskwarrior redis-cli z brew last-working-dir web-search zsh-syntax-highlighting)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
