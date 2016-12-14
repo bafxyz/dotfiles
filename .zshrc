@@ -2,13 +2,16 @@
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Path to your golang installation.
-export GOPATH=$HOME/work
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export ANDROID_HOME=/usr/local/opt/android-sdk
 source $ZSH/oh-my-zsh.sh
+
+# Initialize golang
+export GOPATH=$HOME/gocode
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # Initialize nvm
 #export NVM_DIR=~/.nvm
@@ -20,21 +23,18 @@ source $ZSH/oh-my-zsh.sh
 # Initialize z.
 # Move next only if `homebrew` is installed
 if command -v brew >/dev/null 2>&1; then
-		# Load rupa's z if installed
-		[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+	# Load rupa's z if installed
+	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
 fi
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
 # Shortcuts
-alias d="cd ~/Dropbox"
 alias www="cd ~/Sites"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
 alias h="history"
-alias -- -="cd -"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -92,7 +92,7 @@ alias ff="sudo find / -name "
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="wild-cherry"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
