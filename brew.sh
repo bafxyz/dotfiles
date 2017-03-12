@@ -28,6 +28,10 @@ brew install vim
 # Install go
 brew install go
 
+# Install neovim
+brew tap neovim/neovim
+brew install neovim
+
 # Vim autocomplete package dependency
 brew install CMake
 
@@ -138,7 +142,7 @@ npm install -g npm@latest
 # Install android-sdk
 brew install android-sdk
 brew install ant
-brew install Caskroom/cask/genymotion
+# brew install Caskroom/cask/genymotion
 
 # Install html linter
 # brew install homebrew/dupes/tidy
@@ -154,8 +158,8 @@ brew cleanup
 npm install webpack-dev-server --global
 
 # Ruby packages
-gem install sass
-gem install scss-lint
+# gem install sass
+# gem install scss-lint
 
 # Task manager
 brew install task
