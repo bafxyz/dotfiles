@@ -25,7 +25,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 set t_Co=256
 set background=dark
 if has("termguicolors")
-	set termguicolors
+  set termguicolors
 endif
 syntax on
 colorscheme neodark
@@ -107,7 +107,7 @@ set title " Show the filename in the window title bar
 set ttyfast " Send more characters at a given time
 set undofile " Persistent Undo
 if !has('nvim')
-	set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
+  set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
 endif
 set visualbell " Use visual bell instead of audible bell (annoying)
 set path +=** " Usage find 'filename' and press tab key also 'ls' shows list of recent opened files or :b 'substr' of file name and enter key
@@ -127,13 +127,13 @@ set wrapscan " Searches wrap around end of file
 let g:myLang = 0
 let g:myLangList = ['nospell', 'en_gb', 'ru_ru']
 function! MySpellLang()
-	"loop through languages
-	if g:myLang == 0 | setlocal nospell | endif
-	if g:myLang == 1 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
-	if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
-	echomsg 'language:' g:myLangList[g:myLang]
-	let g:myLang = g:myLang + 1
-	if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+  "loop through languages
+  if g:myLang == 0 | setlocal nospell | endif
+  if g:myLang == 1 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+  if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+  echomsg 'language:' g:myLangList[g:myLang]
+  let g:myLang = g:myLang + 1
+  if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
 endfunction
 map <F7> :<C-U>call MySpellLang()<CR>
 " }}}
@@ -145,169 +145,176 @@ map <F7> :<C-U>call MySpellLang()<CR>
 
 " General {{{
 augroup general_config
-	autocmd!
+  autocmd!
 
-	" Speed up viewport scrolling {{{
-	nnoremap <C-e> 3<C-e>
-	nnoremap <C-y> 3<C-y>
-	" }}}
+  " Speed up viewport scrolling {{{
+  nnoremap <C-e> 3<C-e>
+  nnoremap <C-y> 3<C-y>
+  " }}}
 
-	" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l) {{{
-	map <C-j> <C-W>j
-	map <C-k> <C-W>k
-	map <C-H> <C-W>h
-	map <C-L> <C-W>l
-	" }}}
+  " Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l) {{{
+  map <C-j> <C-W>j
+  map <C-k> <C-W>k
+  map <C-H> <C-W>h
+  map <C-L> <C-W>l
+  " }}}
 
-	" Sudo write (,W) {{{
-	noremap <leader>W :w !sudo tee %<CR>
-	" }}}
+  " Sudo write (,W) {{{
+  noremap <leader>W :w !sudo tee %<CR>
+  " }}}
 
-	" Create the tags file {{{
-	command! MakeTags !ctags -R .
-	" - Use ^] to jump to tag under the cursor
-	" - Use g^] for ambiguous tags
-	" - Use ^t to jump back up the tag stack
-	" }}}
+  " Create the tags file {{{
+  command! MakeTags !ctags -R .
+  " - Use ^] to jump to tag under the cursor
+  " - Use g^] for ambiguous tags
+  " - Use ^t to jump back up the tag stack
+  " }}}
 
-	" Get output of shell commands {{{
-	command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
-	" }}}
+  " Get output of shell commands {{{
+  command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
+  " }}}
 
-	" Remap :W to :w {{{
-	command! W w
-	" }}}
+  " Remap :W to :w {{{
+  command! W w
+  " }}}
 
-	" Hard to type things {{{
-	iabbrev >> →
-	iabbrev << ←
-	iabbrev ^^ ↑
-	iabbrev VV ↓
-	iabbrev aa λ
-	" }}}
+  " Hard to type things {{{
+  iabbrev >> →
+  iabbrev << ←
+  iabbrev ^^ ↑
+  iabbrev VV ↓
+  iabbrev aa λ
+  " }}}
 
-	" Toggle show tabs and trailing spaces (,w) {{{
-	set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
-	set fcs=fold:-
-	nnoremap <silent> <leader>w :set nolist!<CR>
-	" }}}
+  " Toggle show tabs and trailing spaces (,w) {{{
+  set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
+  set fcs=fold:-
+  nnoremap <silent> <leader>w :set nolist!<CR>
+  " }}}
 
-	" Remap keys for auto-completion menu {{{
-	inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
-	inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
-	inoremap <expr> <Up>   pumvisible() ? "\<C-p>" : "\<Up>"
-	" }}}
+  " Remap keys for auto-completion menu {{{
+  inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
+  inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
+  inoremap <expr> <Up>   pumvisible() ? "\<C-p>" : "\<Up>"
+  " }}}
 
-	" Paste toggle (,p) {{{
-	set pastetoggle=<leader>p
-	map <leader>p :set invpaste paste?<CR>
-	" }}}
+  " Paste toggle (,p) {{{
+  set pastetoggle=<leader>p
+  map <leader>p :set invpaste paste?<CR>
+  " }}}
 
-	" Open vimrc {{{
-	nnoremap <leader>v :e ~/.vimrc <CR>
-	nnoremap <leader>V :tabnew ~/.vimrc <CR>
-	" }}}
+  " Open vimrc {{{
+  nnoremap <leader>v :e ~/.vimrc <CR>
+  nnoremap <leader>V :tabnew ~/.vimrc <CR>
+  " }}}
 
-	" Toggle relative line number {{{
-	nmap <Leader>n :exec &rnu? "se rnu!" : "se rnu"<CR>
-	" }}}
+  " Toggle relative line number {{{
+  nmap <Leader>n :exec &rnu? "se rnu!" : "se rnu"<CR>
+  " }}}
 
-	" Yank from cursor to end of line {{{
-	nnoremap Y y$
-	" }}}
+  " Yank from cursor to end of line {{{
+  nnoremap Y y$
+  " }}}
 
-	" Search and replace word under cursor (,*) {{{
-	nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
-	vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
-	" }}}
+  " Search and replace word under cursor (,*) {{{
+  nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+  vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
+  " }}}
 
-	" Strip trailing whitespace (,ww) {{{
-	function! StripWhitespace () " {{{
-		let save_cursor = getpos(".")
-		let old_query = getreg('/')
-		:%s/\s\+$//e
-		call setpos('.', save_cursor)
-		call setreg('/', old_query)
-	endfunction " }}}
-	noremap <leader>ww :call StripWhitespace ()<CR>
-	" }}}
+  " Strip trailing whitespace (,ww) {{{
+  function! StripWhitespace () " {{{
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+  endfunction " }}}
+  noremap <leader>ww :call StripWhitespace ()<CR>
+  " }}}
 
-	" Join lines and restore cursor location (J) {{{
-	nnoremap J mjJ`j
-	" }}}
+  " Join lines and restore cursor location (J) {{{
+  nnoremap J mjJ`j
+  " }}}
 
-	" Toggle folds (<Space>) {{{
-	nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
-	" }}}
+  " Toggle folds (<Space>) {{{
+  nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
+  " }}}
 
-	" Fix page up and down {{{
-	map <PageUp> <C-U>
-	map <PageDown> <C-D>
-	imap <PageUp> <C-O><C-U>
-	imap <PageDown> <C-O><C-D>
-	" }}}
+  " Fix page up and down {{{
+  map <PageUp> <C-U>
+  map <PageDown> <C-D>
+  imap <PageUp> <C-O><C-U>
+  imap <PageDown> <C-O><C-D>
+  " }}}
 
-	" Relative numbers {{{
-	set relativenumber " Use relative line numbers. Current line is still in status bar.
-	au BufReadPost,BufNewFile * set relativenumber
-	" }}}
+  " Relative numbers {{{
+  set relativenumber " Use relative line numbers. Current line is still in status bar.
+  au BufReadPost,BufNewFile * set relativenumber
+  " }}}
+
+  " Indent bindings {{{
+  nmap <Leader>2s :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+  nmap <Leader>4s :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+  nmap <Leader>2t :set noexpandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+  nmap <Leader>4t :set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+  " }}}
 augroup END
 " }}}
 
 " Jumping to tags {{{
 augroup jump_to_tags
-	autocmd!
+  autocmd!
 
-	" Basically, <c-]> jumps to tags (like normal) and <c-\> opens the tag in a new
-	" split instead.
-	"
-	" Both of them will align the destination line to the upper middle part of the
-	" screen.  Both will pulse the cursor line so you can see where the hell you
-	" are.  <c-\> will also fold everything in the buffer and then unfold just
-	" enough for you to see the destination line.
-	nnoremap <c-]> <c-]>mzzvzz15<c-e>`z:Pulse<cr>
-	nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<c-e>`z:Pulse<cr>
+  " Basically, <c-]> jumps to tags (like normal) and <c-\> opens the tag in a new
+  " split instead.
+  "
+  " Both of them will align the destination line to the upper middle part of the
+  " screen.  Both will pulse the cursor line so you can see where the hell you
+  " are.  <c-\> will also fold everything in the buffer and then unfold just
+  " enough for you to see the destination line.
+  nnoremap <c-]> <c-]>mzzvzz15<c-e>`z:Pulse<cr>
+  nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<c-e>`z:Pulse<cr>
 
-	" Pulse Line (thanks Steve Losh)
-	function! s:Pulse() " {{{
-		redir => old_hi
-		silent execute 'hi CursorLine'
-		redir END
-		let old_hi = split(old_hi, '\n')[0]
-		let old_hi = substitute(old_hi, 'xxx', '', '')
+  " Pulse Line (thanks Steve Losh)
+  function! s:Pulse() " {{{
+    redir => old_hi
+    silent execute 'hi CursorLine'
+    redir END
+    let old_hi = split(old_hi, '\n')[0]
+    let old_hi = substitute(old_hi, 'xxx', '', '')
 
-		let steps = 8
-		let width = 1
-		let start = width
-		let end = steps * width
-		let color = 233
+    let steps = 8
+    let width = 1
+    let start = width
+    let end = steps * width
+    let color = 233
 
-		for i in range(start, end, width)
-			execute "hi CursorLine ctermbg=" . (color + i)
-			redraw
-			sleep 6m
-		endfor
-		for i in range(end, start, -1 * width)
-			execute "hi CursorLine ctermbg=" . (color + i)
-			redraw
-			sleep 6m
-		endfor
+    for i in range(start, end, width)
+      execute "hi CursorLine ctermbg=" . (color + i)
+      redraw
+      sleep 6m
+    endfor
+    for i in range(end, start, -1 * width)
+      execute "hi CursorLine ctermbg=" . (color + i)
+      redraw
+      sleep 6m
+    endfor
 
-		execute 'hi ' . old_hi
-	endfunction " }}}
+    execute 'hi ' . old_hi
+  endfunction " }}}
 
-	command! -nargs=0 Pulse call s:Pulse()
+  command! -nargs=0 Pulse call s:Pulse()
 augroup END
 " }}}
 
 " Restore Cursor Position {{{
 augroup restore_cursor
-	autocmd!
+  autocmd!
 
-	autocmd BufReadPost *
-				\ if line("'\"") > 1 && line("'\"") <= line("$") |
-				\   exe "normal! g`\"" |
-				\ endif
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
 augroup END
 " }}}
 
@@ -316,22 +323,22 @@ augroup END
 
 " JavaScript {{{
 augroup filetype_javascript
-	autocmd!
-	let g:javascript_conceal = 1
+  autocmd!
+  let g:javascript_conceal = 1
 augroup END
 " }}}
 
 " JSON {{{
 augroup filetype_json
-	autocmd!
-	au BufRead,BufNewFile *.json set ft=json syntax=javascript
+  autocmd!
+  au BufRead,BufNewFile *.json set ft=json syntax=javascript
 augroup END
 " }}}
 
 " Markdown {{{
 augroup filetype_markdown
-	autocmd!
-	let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
+  autocmd!
+  let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
 augroup END
 " }}}
 
@@ -341,39 +348,39 @@ augroup END
 
 " Airline.vim {{{
 augroup airline_config
-	autocmd!
-	let g:airline_powerline_fonts = 1
-	let g:airline_enable_syntastic = 1
-	let g:airline#extensions#tabline#buffer_nr_format = '%s '
-	let g:airline#extensions#tabline#buffer_nr_show = 1
-	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#fnamecollapse = 0
-	let g:airline#extensions#tabline#fnamemod = ':t'
-	nmap <leader>1 <Plug>AirlineSelectTab1
-	nmap <leader>2 <Plug>AirlineSelectTab2
-	nmap <leader>3 <Plug>AirlineSelectTab3
-	nmap <leader>4 <Plug>AirlineSelectTab4
-	nmap <leader>5 <Plug>AirlineSelectTab5
-	nmap <leader>6 <Plug>AirlineSelectTab6
-	nmap <leader>7 <Plug>AirlineSelectTab7
-	nmap <leader>8 <Plug>AirlineSelectTab8
-	nmap <leader>9 <Plug>AirlineSelectTab9
+  autocmd!
+  let g:airline_powerline_fonts = 1
+  let g:airline_enable_syntastic = 1
+  let g:airline#extensions#tabline#buffer_nr_format = '%s '
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
 augroup END
 " }}}
 
 " Syntastic.vim {{{
 augroup syntastic_config
-	autocmd!
-	let g:syntastic_error_symbol = '✗'
-	let g:syntastic_warning_symbol = '⚠'
-	let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+  autocmd!
+  let g:syntastic_error_symbol = '✗'
+  let g:syntastic_warning_symbol = '⚠'
+  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 augroup END
 " }}}
 
 " Tagbar.vim {{{
 augroup tagbar_config
-	autocmd!
-	nmap <F8> :TagbarToggle<CR>
+  autocmd!
+  nmap <F8> :TagbarToggle<CR>
 augroup END
 " }}}
 
@@ -384,9 +391,9 @@ augroup END
 " vim-plug (https://github.com/junegunn/vim-plug) settings
 " Automatically install vim-plug and run PlugInstall if vim-plug not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall | source $MYVIMRC
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
