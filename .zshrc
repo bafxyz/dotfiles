@@ -261,3 +261,5 @@ function o() {
 		open "$@";
 	fi;
 }
+
+eval "$(thefuck --alias)"
