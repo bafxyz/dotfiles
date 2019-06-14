@@ -18,3 +18,5 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias f="find . -name "
 alias ff="sudo find / -name "
 alias o="open . "
+alias l="ls -la"
+alias git="env LANG=en_GB git"
